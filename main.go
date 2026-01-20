@@ -1,7 +1,7 @@
 package main
 
-import "fmt"
+import "github.com/oliverguenther/ddev-mngr/cmd"
 
 func main() {
-	fmt.Println("ddev-mngr")
+	cmd.Execute()
 }
