@@ -48,8 +48,3 @@ func NewModel() Model {
 func (m Model) Init() tea.Cmd {
 	return tea.Batch(m.spinner.Tick, loadProjects)
 }
-
-// loadProjects is a placeholder - will be implemented in update.go
-func loadProjects() tea.Msg {
-	return nil
-}
