@@ -42,9 +42,9 @@ func TestStartCommand(t *testing.T) {
 	}
 
 	args := cmd.Args
-	// Args[0] is the command itself
-	if len(args) < 3 || args[1] != "start" || args[2] != "-s" {
-		t.Errorf("unexpected args: %v", args)
+	// Args[0] is the command itself, Args[1] is "start", Args[2] is the project name
+	if len(args) != 3 || args[1] != "start" || args[2] != "test-project" {
+		t.Errorf("expected args [ddev start test-project], got %v", args)
 	}
 }
 

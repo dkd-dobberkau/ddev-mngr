@@ -39,7 +39,7 @@ func List() ([]Project, error) {
 }
 
 func StartCommand(name string) *exec.Cmd {
-	return exec.Command("ddev", "start", "-s", name)
+	return exec.Command("ddev", "start", name)
 }
 
 func StopCommand(name string) *exec.Cmd {
@@ -48,10 +48,16 @@ func StopCommand(name string) *exec.Cmd {
 
 func Start(name string) error {
 	cmd := StartCommand(name)
-	return cmd.Run()
+	if err := cmd.Run(); err != nil {
+		return fmt.Errorf("failed to start project '%s': %w", name, err)
+	}
+	return nil
 }
 
 func Stop(name string) error {
 	cmd := StopCommand(name)
-	return cmd.Run()
+	if err := cmd.Run(); err != nil {
+		return fmt.Errorf("failed to stop project '%s': %w", name, err)
+	}
+	return nil
 }
