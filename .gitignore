@@ -1,3 +1,6 @@
 # Binaries
 ddev-mngr
 *.exe
+
+# OS files
+.DS_Store
