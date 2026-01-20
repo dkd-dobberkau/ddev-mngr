@@ -47,7 +47,7 @@ DDEV Project Manager
   ○ another-project      stopped
 > ● active-project       running
 
-[↑↓] Navigate  [Enter] Start/Stop  [r] Refresh  [q] Quit
+[Up/Down] Navigate  [Enter] Start/Stop  [r] Refresh  [q] Quit
 ```
 
 ### CLI Mode
@@ -63,8 +63,8 @@ ddev-mngr status [name]     # Show status
 
 | Key | Action |
 |-----|--------|
-| ↑/k | Move up |
-| ↓/j | Move down |
+| Up/k | Move up |
+| Down/j | Move down |
 | Enter | Toggle start/stop |
 | r | Refresh list |
 | q/Esc | Quit |
