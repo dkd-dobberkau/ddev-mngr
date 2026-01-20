@@ -33,3 +33,30 @@ func TestParseListOutputInvalidJSON(t *testing.T) {
 		t.Fatal("expected error for invalid JSON, got nil")
 	}
 }
+
+func TestStartCommand(t *testing.T) {
+	cmd := StartCommand("test-project")
+
+	if cmd.Path == "" {
+		t.Error("command path should not be empty")
+	}
+
+	args := cmd.Args
+	// Args[0] is the command itself
+	if len(args) < 3 || args[1] != "start" || args[2] != "-s" {
+		t.Errorf("unexpected args: %v", args)
+	}
+}
+
+func TestStopCommand(t *testing.T) {
+	cmd := StopCommand("test-project")
+
+	if cmd.Path == "" {
+		t.Error("command path should not be empty")
+	}
+
+	args := cmd.Args
+	if len(args) < 2 || args[1] != "stop" {
+		t.Errorf("unexpected args: %v", args)
+	}
+}

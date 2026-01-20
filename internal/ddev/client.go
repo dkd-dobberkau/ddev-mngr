@@ -37,3 +37,21 @@ func List() ([]Project, error) {
 	}
 	return projects, nil
 }
+
+func StartCommand(name string) *exec.Cmd {
+	return exec.Command("ddev", "start", "-s", name)
+}
+
+func StopCommand(name string) *exec.Cmd {
+	return exec.Command("ddev", "stop", name)
+}
+
+func Start(name string) error {
+	cmd := StartCommand(name)
+	return cmd.Run()
+}
+
+func Stop(name string) error {
+	cmd := StopCommand(name)
+	return cmd.Run()
+}
