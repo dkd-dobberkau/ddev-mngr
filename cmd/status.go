@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/oliverguenther/ddev-mngr/internal/ddev"
+	"github.com/dkd-dobberkau/ddev-mngr/internal/ddev"
 	"github.com/spf13/cobra"
 )
 

@@ -1,4 +1,4 @@
-module github.com/oliverguenther/ddev-mngr
+module github.com/dkd-dobberkau/ddev-mngr
 
 go 1.25.6
 

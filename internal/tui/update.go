@@ -3,7 +3,7 @@ package tui
 import (
 	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/oliverguenther/ddev-mngr/internal/ddev"
+	"github.com/dkd-dobberkau/ddev-mngr/internal/ddev"
 )
 
 type projectsLoadedMsg struct {
