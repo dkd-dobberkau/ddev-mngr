@@ -6,7 +6,7 @@ description: A CLI tool to manage DDEV projects with interactive TUI
 
 # ddev-mngr
 
-A fast, interactive CLI tool to manage your DDEV projects.
+A fast, interactive CLI tool to manage your [DDEV](https://ddev.com) projects.
 
 ## Features
 
@@ -71,6 +71,7 @@ ddev-mngr status [name]     # Show status
 
 ## Links
 
+- [DDEV](https://ddev.com) - Local development environment
 - [GitHub Repository](https://github.com/dkd-dobberkau/ddev-mngr)
 - [Releases](https://github.com/dkd-dobberkau/ddev-mngr/releases)
 - [Issues](https://github.com/dkd-dobberkau/ddev-mngr/issues)
