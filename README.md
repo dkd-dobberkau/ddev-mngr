@@ -4,13 +4,24 @@ A CLI tool to manage DDEV projects with interactive and command-line modes.
 
 ## Installation
 
+### Homebrew (macOS/Linux)
+
 ```bash
-go install github.com/oliverguenther/ddev-mngr@latest
+brew tap dkd-dobberkau/tap
+brew install ddev-mngr
 ```
 
-Or build from source:
+### Go Install
 
 ```bash
+go install github.com/dkd-dobberkau/ddev-mngr@latest
+```
+
+### Build from Source
+
+```bash
+git clone https://github.com/dkd-dobberkau/ddev-mngr.git
+cd ddev-mngr
 go build -o ddev-mngr
 ```
 
@@ -37,8 +48,12 @@ ddev-mngr status [name]     # Show status
 
 | Key | Action |
 |-----|--------|
-| Up/k | Move up |
-| Down/j | Move down |
+| ↑/k | Move up |
+| ↓/j | Move down |
 | Enter | Toggle start/stop |
 | r | Refresh list |
 | q/Esc | Quit |
+
+## License
+
+Apache 2.0
