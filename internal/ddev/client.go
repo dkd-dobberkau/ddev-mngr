@@ -2,6 +2,7 @@ package ddev
 
 import (
 	"encoding/json"
+	"fmt"
 	"os/exec"
 )
 
@@ -28,7 +29,11 @@ func List() ([]Project, error) {
 	cmd := exec.Command("ddev", "list", "--json-output")
 	output, err := cmd.Output()
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to list DDEV projects: %w", err)
 	}
-	return ParseListOutput(output)
+	projects, err := ParseListOutput(output)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse DDEV list output: %w", err)
+	}
+	return projects, nil
 }

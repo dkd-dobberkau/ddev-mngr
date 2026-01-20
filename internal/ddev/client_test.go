@@ -24,3 +24,12 @@ func TestParseListOutput(t *testing.T) {
 		t.Errorf("expected status 'running', got '%s'", projects[0].Status)
 	}
 }
+
+func TestParseListOutputInvalidJSON(t *testing.T) {
+	invalidJSON := `{invalid json}`
+
+	_, err := ParseListOutput([]byte(invalidJSON))
+	if err == nil {
+		t.Fatal("expected error for invalid JSON, got nil")
+	}
+}
