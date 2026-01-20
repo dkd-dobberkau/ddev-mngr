@@ -1,0 +1,5 @@
+title: ddev-mngr
+description: A CLI tool to manage DDEV projects with interactive TUI
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+  - jekyll-remote-theme
