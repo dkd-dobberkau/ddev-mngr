@@ -25,6 +25,13 @@ cd ddev-mngr
 go build -o ddev-mngr
 ```
 
+## Features
+
+- Interactive TUI for managing DDEV projects
+- Start/stop projects with a single keypress
+- View project URLs for running projects
+- CLI mode for scripting and automation
+
 ## Usage
 
 ### Interactive Mode
@@ -33,7 +40,12 @@ go build -o ddev-mngr
 ddev-mngr
 ```
 
-Use arrow keys to navigate, Enter to start/stop projects.
+Use arrow keys to navigate, Enter to start/stop projects. Running projects display their URL:
+
+```
+● my-project               running     https://my-project.ddev.site
+○ another-project          stopped
+```
 
 ### CLI Mode
 
