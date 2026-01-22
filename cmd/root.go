@@ -9,6 +9,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+func SetVersion(v string) {
+	rootCmd.Version = v
+}
+
 var rootCmd = &cobra.Command{
 	Use:   "ddev-mngr",
 	Short: "Manage DDEV projects",
