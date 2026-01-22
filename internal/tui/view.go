@@ -38,7 +38,12 @@ func (m Model) View() string {
 			style = runningStyle
 		}
 
-		line := fmt.Sprintf("%s%s %-25s %s", cursor, symbol, p.Name, p.Status)
+		urlInfo := ""
+		if p.Status == "running" && p.HTTPUrl != "" {
+			urlInfo = fmt.Sprintf("  %s", p.HTTPUrl)
+		}
+
+		line := fmt.Sprintf("%s%s %-25s %-10s%s", cursor, symbol, p.Name, p.Status, urlInfo)
 
 		if i == m.cursor {
 			if m.working {
