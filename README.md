@@ -54,6 +54,7 @@ ddev-mngr list              # List all projects
 ddev-mngr start <name>      # Start a project
 ddev-mngr stop <name>       # Stop a project
 ddev-mngr status [name]     # Show status
+ddev-mngr --version         # Show version
 ```
 
 ## Keybindings (Interactive Mode)
