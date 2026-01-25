@@ -15,6 +15,10 @@ type actionDoneMsg struct {
 	err error
 }
 
+type poweroffDoneMsg struct {
+	err error
+}
+
 func loadProjects() tea.Msg {
 	projects, err := ddev.List()
 	return projectsLoadedMsg{projects: projects, err: err}
@@ -32,10 +36,25 @@ func toggleProject(p ddev.Project) tea.Cmd {
 	}
 }
 
+func poweroffAll() tea.Msg {
+	err := ddev.Poweroff()
+	return poweroffDoneMsg{err: err}
+}
+
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
-		if m.working {
+		if m.working || m.poweringOff {
+			return m, nil
+		}
+
+		if m.confirmingPoweroff {
+			if msg.String() == "p" {
+				m.confirmingPoweroff = false
+				m.poweringOff = true
+				return m, tea.Batch(m.spinner.Tick, poweroffAll)
+			}
+			m.confirmingPoweroff = false
 			return m, nil
 		}
 
@@ -55,6 +74,9 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				m.working = true
 				return m, tea.Batch(m.spinner.Tick, toggleProject(m.projects[m.cursor]))
 			}
+		case "p":
+			m.confirmingPoweroff = true
+			return m, nil
 		case "r":
 			m.loading = true
 			return m, tea.Batch(m.spinner.Tick, loadProjects)
@@ -73,6 +95,12 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	case actionDoneMsg:
 		m.working = false
+		m.err = msg.err
+		m.loading = true
+		return m, loadProjects
+
+	case poweroffDoneMsg:
+		m.poweringOff = false
 		m.err = msg.err
 		m.loading = true
 		return m, loadProjects

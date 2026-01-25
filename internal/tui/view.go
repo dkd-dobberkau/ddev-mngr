@@ -61,7 +61,16 @@ func (m Model) View() string {
 	}
 
 	b.WriteString("\n")
-	b.WriteString(helpStyle.Render("[↑↓/jk] Navigate  [Enter] Start/Stop  [r] Refresh  [q] Quit"))
+
+	if m.poweringOff {
+		b.WriteString(m.spinner.View() + " Stopping all projects...\n")
+	} else if m.confirmingPoweroff {
+		b.WriteString(selectedStyle.Render("Press p again to stop all projects, any other key to cancel"))
+		b.WriteString("\n")
+	}
+
+	b.WriteString("\n")
+	b.WriteString(helpStyle.Render("[↑↓/jk] Navigate  [Enter] Start/Stop  [p] Poweroff  [r] Refresh  [q] Quit"))
 	b.WriteString("\n")
 
 	return b.String()

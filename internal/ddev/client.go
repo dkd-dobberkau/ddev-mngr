@@ -61,3 +61,15 @@ func Stop(name string) error {
 	}
 	return nil
 }
+
+func PoweroffCommand() *exec.Cmd {
+	return exec.Command("ddev", "poweroff")
+}
+
+func Poweroff() error {
+	cmd := PoweroffCommand()
+	if err := cmd.Run(); err != nil {
+		return fmt.Errorf("failed to poweroff all projects: %w", err)
+	}
+	return nil
+}

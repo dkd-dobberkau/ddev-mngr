@@ -26,12 +26,14 @@ var (
 )
 
 type Model struct {
-	projects []ddev.Project
-	cursor   int
-	loading  bool
-	working  bool
-	spinner  spinner.Model
-	err      error
+	projects           []ddev.Project
+	cursor             int
+	loading            bool
+	working            bool
+	poweringOff        bool
+	confirmingPoweroff bool
+	spinner            spinner.Model
+	err                error
 }
 
 func NewModel() Model {
