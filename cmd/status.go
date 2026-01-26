@@ -24,8 +24,8 @@ var statusCmd = &cobra.Command{
 			for _, p := range projects {
 				if p.Name == name {
 					fmt.Printf("%s: %s", p.Name, p.Status)
-					if p.HTTPUrl != "" && p.Status == "running" {
-						fmt.Printf(" (%s)", p.HTTPUrl)
+					if p.HTTPSUrl != "" && p.Status == "running" {
+						fmt.Printf(" (%s)", p.HTTPSUrl)
 					}
 					fmt.Println()
 					return

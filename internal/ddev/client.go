@@ -10,7 +10,7 @@ type Project struct {
 	Name      string `json:"name"`
 	Status    string `json:"status"`
 	ShortRoot string `json:"shortroot"`
-	HTTPUrl   string `json:"httpurl"`
+	HTTPSUrl  string `json:"httpsurl"`
 }
 
 type listOutput struct {

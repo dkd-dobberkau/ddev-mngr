@@ -5,7 +5,7 @@ import (
 )
 
 func TestParseListOutput(t *testing.T) {
-	jsonOutput := `{"raw":[{"name":"test-project","status":"running","shortroot":"~/test","httpurl":"https://test.ddev.site"}]}`
+	jsonOutput := `{"raw":[{"name":"test-project","status":"running","shortroot":"~/test","httpsurl":"https://test.ddev.site"}]}`
 
 	projects, err := ParseListOutput([]byte(jsonOutput))
 	if err != nil {
