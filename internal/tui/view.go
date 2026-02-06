@@ -70,7 +70,7 @@ func (m Model) View() string {
 	}
 
 	b.WriteString("\n")
-	b.WriteString(helpStyle.Render("[↑↓/jk] Navigate  [Enter] Start/Stop  [p] Poweroff  [r] Refresh  [q] Quit"))
+	b.WriteString(helpStyle.Render("[↑↓/jk] Navigate  [Enter] Start/Stop  [o] Open  [p] Poweroff  [r] Refresh  [q] Quit"))
 	b.WriteString("\n")
 
 	return b.String()

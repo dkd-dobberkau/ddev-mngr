@@ -1,6 +1,10 @@
 package tui
 
 import (
+	"fmt"
+	"os/exec"
+	"runtime"
+
 	"github.com/charmbracelet/bubbles/spinner"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/dkd-dobberkau/ddev-mngr/internal/ddev"
@@ -41,6 +45,21 @@ func poweroffAll() tea.Msg {
 	return poweroffDoneMsg{err: err}
 }
 
+func openBrowser(url string) error {
+	var cmd *exec.Cmd
+	switch runtime.GOOS {
+	case "darwin":
+		cmd = exec.Command("open", url)
+	case "linux":
+		cmd = exec.Command("xdg-open", url)
+	case "windows":
+		cmd = exec.Command("rundll32", "url.dll,FileProtocolHandler", url)
+	default:
+		return fmt.Errorf("unsupported platform: %s", runtime.GOOS)
+	}
+	return cmd.Start()
+}
+
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
@@ -77,6 +96,13 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "p":
 			m.confirmingPoweroff = true
 			return m, nil
+		case "o":
+			if len(m.projects) > 0 {
+				p := m.projects[m.cursor]
+				if p.Status == "running" && p.HTTPSUrl != "" {
+					openBrowser(p.HTTPSUrl)
+				}
+			}
 		case "r":
 			m.loading = true
 			return m, tea.Batch(m.spinner.Tick, loadProjects)
