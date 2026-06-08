@@ -50,4 +50,4 @@ brews:
     install: |
       bin.install "ddev-mngr"
     test: |
-      system "#{bin}/ddev-mngr", "--help"
+      system bin/"ddev-mngr", "--help"
