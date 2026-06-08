@@ -4,3 +4,6 @@ ddev-mngr
 
 # OS files
 .DS_Store
+
+# Playwright MCP temporary files
+.playwright-mcp/
